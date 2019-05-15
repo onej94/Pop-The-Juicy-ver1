@@ -20,6 +20,7 @@ public class Board : MonoBehaviour
     public int offSet;
     public GameObject tilePrefab;
     public GameObject[] dots;
+    public GameObject destroyEffect;
     private BackgroundTile[,] allTiles;
     public GameObject[,] allDots;
     private FindMatches findMatches;
@@ -105,6 +106,8 @@ public class Board : MonoBehaviour
         if (allDots[column, row].GetComponent<Dot>().isMatched)
         {
             findMatches.currentMatches.Remove(allDots[column, row]);
+            GameObject particle = Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
+            Destroy(particle, .5f);
             Destroy(allDots[column, row]);
             allDots[column, row] = null;
         }
@@ -160,6 +163,7 @@ public class Board : MonoBehaviour
                     Vector2 tempPosition = new Vector2(i, j + offSet);
                     int dotToUse = Random.Range(0, dots.Length);
                     GameObject piece = Instantiate(dots[dotToUse], tempPosition, Quaternion.identity);
+                    piece.transform.parent = this.transform; //새로 생성된 블록을 보드로 상속시켜준다(클론이 생성되지 않음)
                     allDots[i, j] = piece;
                     piece.GetComponent<Dot>().row = j;
                     piece.GetComponent<Dot>().column = i;
