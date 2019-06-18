@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -182,6 +183,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673a1dca7fe01e2419356af81647eb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: -10
+  aspectRatio: 0.625
+  padding: 0.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -218,10 +234,10 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
+  m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &519420032
@@ -270,8 +286,10 @@ MonoBehaviour:
   currentState: 1
   width: 7
   height: 10
-  offSet: 20
+  offSet: 10
   tilePrefab: {fileID: 1507442214495447627, guid: 9a65d84364883324dac0f6dd090ebf11,
+    type: 3}
+  breakableTilePrefab: {fileID: 2065708351629170573, guid: f25776b26fe07684bbcb642642b95741,
     type: 3}
   dots:
   - {fileID: 4802068777290870872, guid: 0f9b2baec43ffdc46ae491ccf72a8525, type: 3}
@@ -282,8 +300,28 @@ MonoBehaviour:
   - {fileID: 1586951600198997831, guid: 03b82dbb9da7d594d9f6fd923700bbce, type: 3}
   - {fileID: 1773647758668486081, guid: 1136e2e227a6a5645a87953c1de538ad, type: 3}
   - {fileID: 8379394869713869480, guid: 9f5c26ed2b29d6e48869bfadb725550c, type: 3}
-  destroyEffect: {fileID: 4478132873243008766, guid: 86401b7e3b8cc3c479ec75d29d52f138,
+  destroyParticle: {fileID: 4478132873243008766, guid: 86401b7e3b8cc3c479ec75d29d52f138,
     type: 3}
+  boardLayout:
+  - x: 3
+    y: 3
+    tileKind: 1
+  - x: 4
+    y: 3
+    tileKind: 1
+  - x: 2
+    y: 3
+    tileKind: 1
+  - x: 3
+    y: 6
+    tileKind: 0
+  - x: 2
+    y: 6
+    tileKind: 0
+  - x: 2
+    y: 6
+    tileKind: 0
+  currentDot: {fileID: 0}
 --- !u!4 &931347856
 Transform:
   m_ObjectHideFlags: 0

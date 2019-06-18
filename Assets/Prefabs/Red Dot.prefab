@@ -111,7 +111,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   column: 0
   row: 0
+  previousColumn: 0
+  previousRow: 0
   targetX: 0
   targetY: 0
   isMatched: 0
+  otherDot: {fileID: 0}
   swipeAngle: 0
+  swipeResist: 1
+  isColorBomb: 0
+  isColumnBomb: 0
+  isRowBomb: 0
+  isAdjacentBomb: 0
+  rowArrow: {fileID: 3746351811744895407, guid: b00dbcf71214a4f4b85abd81ad55a1e2,
+    type: 3}
+  columnArrow: {fileID: 2072802374014816010, guid: b2a5833471ab29b48a7e8b1fca4e68bd,
+    type: 3}
+  colorBomb: {fileID: 7152257816492922426, guid: 516a1e6d1a635c1418dba04e69d5c811,
+    type: 3}
+  adjacentMarker: {fileID: 3051189805799172222, guid: 5d509074f133c2c4785e7a37c678f352,
+    type: 3}
