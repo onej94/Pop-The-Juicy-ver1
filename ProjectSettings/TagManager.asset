@@ -4,14 +4,20 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dark Green Dot
-  - Green Dot
-  - indigo Dot
-  - Orange Dot
-  - Red Dot
-  - Salmon Dot
-  - Teal Dot
-  - Yellow Dot
+  - Color
+  - Breakable
+  - Board
+  - Concrete
+  - Slime
+  - Lock
+  - Piece1
+  - Piece2
+  - Piece3
+  - Piece4
+  - Piece5
+  - Piece6
+  - Piece7
+  - Piece8
   layers:
   - Default
   - TransparentFX
@@ -48,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Markers
+    uniqueID: 225322323
     locked: 0
