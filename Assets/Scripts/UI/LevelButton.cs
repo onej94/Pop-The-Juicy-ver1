@@ -63,7 +63,6 @@ public class LevelButton : MonoBehaviour
             {
                 isClear = false;
             }
-
         }
     }
 
