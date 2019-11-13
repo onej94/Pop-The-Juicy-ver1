@@ -38,7 +38,7 @@ public class BackgroundTile : MonoBehaviour
         //take the current color
         Color color = sprite.color;
         //get the current color's alpha vlaue
-        float newAlpha = color.a * .5f;
+        float newAlpha = color.a * .3f;
         sprite.color = new Color(color.r, color.g, color.b, newAlpha);
     }
 

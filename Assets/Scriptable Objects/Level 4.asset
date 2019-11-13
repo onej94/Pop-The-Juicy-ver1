@@ -15,38 +15,44 @@ MonoBehaviour:
   width: 6
   height: 8
   boardLayout:
+  - x: 1
+    y: 3
+    tileKind: 1
+  - x: 2
+    y: 3
+    tileKind: 1
   - x: 3
     y: 3
-    tileKind: 2
+    tileKind: 1
   - x: 4
     y: 3
-    tileKind: 2
-  - x: 3
-    y: 4
-    tileKind: 2
+    tileKind: 1
+  - x: 1
+    y: 2
+    tileKind: 1
   - x: 4
-    y: 4
-    tileKind: 2
+    y: 2
+    tileKind: 1
   dots:
   - {fileID: 4802068777290870872, guid: 0f9b2baec43ffdc46ae491ccf72a8525, type: 3}
   - {fileID: 945296634471616789, guid: ec85e2ff2f02659418ce24943721a779, type: 3}
   - {fileID: 1042166979568868831, guid: 450475ca80e627549b2704002f3bc096, type: 3}
   - {fileID: 31885824030098878, guid: 3227e54b6ed5fb1458c76af1b59ac506, type: 3}
   - {fileID: 5225747849059741277, guid: d97286dacbf96b14b98cc67d83a588b0, type: 3}
-  scoreGoals: dc050000d0070000c4090000
+  scoreGoals: e8030000c4090000a00f0000
   endGameRequirements:
     gameType: 0
-    counterValue: 60
+    counterValue: 20
   levelGoals:
-  - numberNeeded: 10
-    numberCollected: 0
-    goalSprite: {fileID: 21300012, guid: d7952d74cf7808341a7d40800cd654c0, type: 3}
-    matchValue: Piece1
-  - numberNeeded: 10
+  - numberNeeded: 15
     numberCollected: 0
     goalSprite: {fileID: 21300010, guid: d7952d74cf7808341a7d40800cd654c0, type: 3}
     matchValue: Piece2
-  - numberNeeded: 4
+  - numberNeeded: 15
+    numberCollected: 0
+    goalSprite: {fileID: 21300002, guid: d7952d74cf7808341a7d40800cd654c0, type: 3}
+    matchValue: Piece5
+  - numberNeeded: 5
     numberCollected: 4
-    goalSprite: {fileID: 21300000, guid: 6f88db419f3bf3541aae7a83a8bf6db2, type: 3}
-    matchValue: Lock
+    goalSprite: {fileID: 21300008, guid: d7952d74cf7808341a7d40800cd654c0, type: 3}
+    matchValue: Piece4

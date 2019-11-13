@@ -117,6 +117,7 @@ MonoBehaviour:
   targetX: 0
   targetY: 0
   isMatched: 0
+  deadbyBomb: 0
   otherDot: {fileID: 0}
   swipeAngle: 0
   swipeResist: 1

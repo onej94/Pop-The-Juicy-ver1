@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdbe2dc6c8a22c47b5008f2d4ef44f9, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  width: 7
-  height: 7
+  width: 6
+  height: 6
   boardLayout: []
   dots:
   - {fileID: 4802068777290870872, guid: 0f9b2baec43ffdc46ae491ccf72a8525, type: 3}
+  - {fileID: 945296634471616789, guid: ec85e2ff2f02659418ce24943721a779, type: 3}
   - {fileID: 1042166979568868831, guid: 450475ca80e627549b2704002f3bc096, type: 3}
   - {fileID: 31885824030098878, guid: 3227e54b6ed5fb1458c76af1b59ac506, type: 3}
-  - {fileID: 5225747849059741277, guid: d97286dacbf96b14b98cc67d83a588b0, type: 3}
-  scoreGoals: f4010000e8030000dc050000
+  scoreGoals: 9001000020030000b0040000
   endGameRequirements:
     gameType: 0
-    counterValue: 20
+    counterValue: 15
   levelGoals:
   - numberNeeded: 10
-    numberCollected: 3
+    numberCollected: 10
     goalSprite: {fileID: 21300012, guid: d7952d74cf7808341a7d40800cd654c0, type: 3}
     matchValue: Piece1

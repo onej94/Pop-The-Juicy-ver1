@@ -37,7 +37,24 @@ public class LevelSelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+
+        {
+
+            Application.Quit();
+
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        gameData.Save();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if(pause)
+            gameData.Save();
     }
 
     public void PageRight()
@@ -60,6 +77,5 @@ public class LevelSelectManager : MonoBehaviour
             currentPanel = panels[page];
             currentPanel.SetActive(true);
         }
-    }
-
+    }    
 }

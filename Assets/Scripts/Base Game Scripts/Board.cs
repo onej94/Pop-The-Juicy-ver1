@@ -148,9 +148,9 @@ public class Board : MonoBehaviour
                 //create a "jelly" tile at that position.
                 Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
 
-                GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
-                backgroundTile.transform.parent = this.transform;
-                backgroundTile.name = "( " + boardLayout[i].x + ", " + boardLayout[i].y + " )";
+                //GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                //backgroundTile.transform.parent = this.transform;
+                //backgroundTile.name = "( " + boardLayout[i].x + ", " + boardLayout[i].y + " )";
 
                 GameObject tile = Instantiate(breakableTilePrefab, tempPosition, Quaternion.identity);
                 breakableTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BackgroundTile>();
@@ -170,9 +170,9 @@ public class Board : MonoBehaviour
                 //create a "Lock" tile at that position.
                 Vector2 tempPosition = new Vector2(boardLayout[i].x, boardLayout[i].y);
 
-                GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
-                backgroundTile.transform.parent = this.transform;
-                backgroundTile.name = "( " + boardLayout[i].x + ", " + boardLayout[i].y + " )";
+                //GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
+                //backgroundTile.transform.parent = this.transform;
+                //backgroundTile.name = "( " + boardLayout[i].x + ", " + boardLayout[i].y + " )";
 
                 GameObject tile = Instantiate(lockTilePrefab, tempPosition, Quaternion.identity);
                 lockTiles[boardLayout[i].x, boardLayout[i].y] = tile.GetComponent<BackgroundTile>();
@@ -266,27 +266,6 @@ public class Board : MonoBehaviour
         GenerateLockTiles();
         GenerateConcreteTiles();
         GenerateSlimeTiles();
-
-        /*for (int i = 0; i < width; i++)
-        {
-            for (int j = 0; j < height; j++)
-            {
-
-                if (slimeTiles[i, j] || concreteTiles[i, j])
-                {
-                    for (int k = 0; k < j; k++)
-                    {
-                        Vector2 tempPosition = new Vector2(i, k);
-
-                        blankSpaces[i, k] = true;
-
-                        GameObject backgroundTile = Instantiate(tilePrefab, tempPosition, Quaternion.identity) as GameObject;
-                        backgroundTile.transform.parent = this.transform;
-                        backgroundTile.name = "( " + i + ", " + k + " )";
-                    }
-                }
-            }
-        }*/
 
         MakeUnmovetype();
 
@@ -497,8 +476,7 @@ public class Board : MonoBehaviour
             }
         }
     }
-
-
+    
     public void BombRow(int row)
     {
         for (int i = 0; i < width; i++)
@@ -554,77 +532,39 @@ public class Board : MonoBehaviour
                 makeSlime = false;
                 MakeNormaltype(column, i);
             }
-
         }
     }
 
-    public void WinBomb()
-    {
-
-        int x = 0;
-        int y = 0;
-        int fx = 0;
-        int fy = 0;
-
-        int counter = endgameManager.currentCounterValue;
-        endgameManager.currentCounterValue = 0;
-        
-        for (int i = 0; i < counter; i++)
-        {
-            x = Random.Range(0, width);
-            y = Random.Range(0, height);
-            int kindofbomb = Random.Range(0, 2);
-
-
-            if (allDots[x, y].GetComponent<Dot>() != null && x == fx && y == fy)
-            {
-                while (!(x == fx) || !(y == fy))
-                {
-                    x = Random.Range(0, width);
-                    y = Random.Range(0, height);
-                    Debug.Log("rerandom ");
-
-                }
-            }
-
-            Debug.Log("x : " + x + ", y : " + y);
-
-
-            switch (kindofbomb)
-            {
-
-                case 0:
-                    allDots[x, y].GetComponent<Dot>().isMatched = false;
-                    allDots[x, y].GetComponent<Dot>().MakeColumnBomb();
-                    findMatches.currentMatches.Union(findMatches.GetRowPieces(allDots[x, y].GetComponent<Dot>().row));
-                    break;
-                case 1:
-                    allDots[x, y].GetComponent<Dot>().isMatched = false;
-                    allDots[x, y].GetComponent<Dot>().MakeRowBomb();
-                    findMatches.currentMatches.Union(findMatches.GetColumnPieces(allDots[x, y].GetComponent<Dot>().column));
-                    break;
-            }
-
-            findMatches.currentMatches.Clear();
-
-
-            fx = x;
-            fy = y;
-
-        }
-
-        Debug.Log("winbomb");
-
-
-        DestroyAllBomb();
-    }
-    
     private void DestroyAllBomb()
     {
-        //findMatches.currentMatches.Clear();
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                if (allDots[i, j] != null && !blankSpaces[i, j] && !concreteTiles[i, j] && !slimeTiles[i, j])
+                {
+                    if (allDots[i, j].GetComponent<Dot>().isColumnBomb == true)
+                    {
+                        findMatches.currentMatches.Union(findMatches.GetColumnPieces(allDots[i, j].GetComponent<Dot>().column));
+                    }
+                    else if (allDots[i, j].GetComponent<Dot>().isRowBomb == true)
+                    {
+                        findMatches.currentMatches.Union(findMatches.GetRowPieces(allDots[i, j].GetComponent<Dot>().row));
+                    }
+                    else if (allDots[i, j].GetComponent<Dot>().isAdjacentBomb == true)
+                    {
+                        findMatches.currentMatches.Union(findMatches.GetAdjacentPieces(allDots[i, j].GetComponent<Dot>().column, allDots[i, j].GetComponent<Dot>().row));
 
+                    }
+                    else if (allDots[i, j].GetComponent<Dot>().isColorBomb == true)
+                    {
+                        findMatches.GetColorPieces(allDots[i, j].GetComponent<Dot>().column, allDots[i, j].GetComponent<Dot>().row, allDots[i, j].GetComponent<Dot>().tag);
+                    }
+                    findMatches.currentMatches.Clear();
+                }
+            }
+        }
         StartCoroutine(DestroyAllBombCo());
-
         StartCoroutine(DecreaseRowCo2());
     }
 
@@ -636,13 +576,9 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-
                 //Debug.Log(allDots[i, j].GetComponent<Dot>().column + " " + allDots[i, j].GetComponent<Dot>().row);
-                DestroyMatchesAt(allDots[i, j].GetComponent<Dot>().column, allDots[i, j].GetComponent<Dot>().row);
-
-                Debug.Log("winbomb Destroy");
-
-
+                if (allDots[i, j] != null && !blankSpaces[i, j] && !concreteTiles[i, j] && !slimeTiles[i, j])
+                    DestroyMatchesAt(allDots[i, j].GetComponent<Dot>().column, allDots[i, j].GetComponent<Dot>().row);
             }
         }
     }
@@ -732,12 +668,14 @@ public class Board : MonoBehaviour
     private void MakeNormaltype(int column, int row)
     {
         int key = 0;
+        int cnt = 0;
 
         for (int i = 0; i < height; i++)
         {
             if (slimeTiles[column, i] || concreteTiles[column, i])
             {
                 key = i;
+                cnt++;
             }
         }
 
@@ -748,7 +686,7 @@ public class Board : MonoBehaviour
                 blankSpaces[column, k] = false;
             }
         }
-        else
+        else if(cnt == 1)
         {
             for (int k = 0; k < key; k++)
             {
@@ -957,6 +895,7 @@ public class Board : MonoBehaviour
     {
         yield return new WaitForSeconds(refillDealy);
         RefillBoard();
+        findMatches.FindAllMatches();
         yield return new WaitForSeconds(refillDealy);
         while (MatchesOnBoard())
         {
@@ -984,22 +923,33 @@ public class Board : MonoBehaviour
         {
             if (cnt == 0)
             {
-                yield return new WaitForSeconds(1f);
-                WinBomb();
+                yield return new WaitForSeconds(0.5f);
+                DestroyAllBomb();
             }
-
-
             if (cnt == 1)
             {
                 yield return new WaitForSeconds(0.5f);
+                int cnt = 0;
+                int lastCounter = endgameManager.currentCounterValue;
+                int currentscore = scoreManager.score;
 
-                endgameManager.RealWinGame();
+                for (int i = 0; i < lastCounter; i++)
+                {
+                    endgameManager.currentCounterValue -= 1;
+                    endgameManager.counter.text = "" + endgameManager.currentCounterValue;
+                    scoreManager.IncreaseScore((int)((double)currentscore / 25)); // 점수 = 현재점수*/25
+                    Debug.Log("decrease");
+                    cnt++;
+                    yield return new WaitForSeconds(0.1f);
+                }
+
+                if (endgameManager.currentCounterValue == 0)
+                {
+                    endgameManager.RealWinGame();
+                }
             }
-
             cnt++;
         }
-
-
     }
 
     private void CheckToMakeSlime()

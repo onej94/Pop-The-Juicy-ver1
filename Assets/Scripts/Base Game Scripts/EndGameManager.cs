@@ -29,6 +29,9 @@ public class EndGameManager : MonoBehaviour
     private Board board;
     private float timerSeconds;
 
+    public Animator WinTextAnim;
+
+
 
 
 
@@ -83,13 +86,13 @@ public class EndGameManager : MonoBehaviour
             {
                 LoseGame();
             }
-        }        
+        }
     }
 
     public void WinGame()
-    {        
-        board.currentState = GameState.win;
-   
+    {
+        WinTextAnim.SetBool("Out", true);
+        board.currentState = GameState.win;        
     }
 
     public void RealWinGame()

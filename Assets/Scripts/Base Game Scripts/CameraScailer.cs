@@ -23,6 +23,8 @@ public class CameraScailer : MonoBehaviour
     {
         Vector3 tempPosition = new Vector3(x / 2, y / 2, cameraOffset);
         transform.position = tempPosition;
+
+        /* 스마트 스케일러(오브젝트 크기가 맵 크기에 따라 달라져서 사용안함 일단)
         if (board.width >= board.height)
         {
             Camera.main.orthographicSize = (board.width / 2 + padding) / aspectRatio;
@@ -31,6 +33,11 @@ public class CameraScailer : MonoBehaviour
         {
             Camera.main.orthographicSize = board.height / 2 + padding;
         }
+        */
+
+        Camera.main.orthographicSize = 6.5f + padding;
+
+
     }
 
 
